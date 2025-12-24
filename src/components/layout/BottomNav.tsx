@@ -1,12 +1,12 @@
-import { Home, Landmark, ShoppingBag, Car } from 'lucide-react';
+import { Home, Landmark, ShoppingBag, Car, Ticket } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const navItems = [
   { path: '/', icon: Home, label: 'Home' },
   { path: '/heritage', icon: Landmark, label: 'Heritage' },
-  { path: '/marketplace', icon: ShoppingBag, label: 'Shop' },
   { path: '/travel', icon: Car, label: 'Travel' },
+  { path: '/bookings', icon: Ticket, label: 'Bookings' },
 ];
 
 export function BottomNav() {
