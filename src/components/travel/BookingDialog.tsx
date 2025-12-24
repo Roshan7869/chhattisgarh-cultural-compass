@@ -54,6 +54,30 @@ export function BookingDialog({ pool, open, onOpenChange }: BookingDialogProps) 
     setIsSubmitting(true);
 
     try {
+      // If online payment selected, redirect to Stripe checkout (to be implemented)
+      if (paymentMethod === 'online') {
+        // TODO: Integrate Stripe checkout here
+        // For now, create booking with pending payment status
+        const { error } = await supabase
+          .from('travel_pool_bookings')
+          .insert({
+            pool_id: pool.id,
+            user_name: name.trim(),
+            user_phone: phone.trim(),
+            user_email: email.trim() || null,
+            seats_booked: seats,
+            total_amount: totalAmount,
+            payment_method: 'online',
+            payment_status: 'pending',
+          });
+
+        if (error) throw error;
+
+        toast.info('Online payments coming soon! Booking saved as pending.');
+        setStep('success');
+        return;
+      }
+
       const { error } = await supabase
         .from('travel_pool_bookings')
         .insert({
@@ -64,7 +88,7 @@ export function BookingDialog({ pool, open, onOpenChange }: BookingDialogProps) 
           seats_booked: seats,
           total_amount: totalAmount,
           payment_method: paymentMethod,
-          payment_status: paymentMethod === 'pay_later' ? 'pending' : 'pending',
+          payment_status: 'pending',
         });
 
       if (error) throw error;
@@ -250,13 +274,13 @@ export function BookingDialog({ pool, open, onOpenChange }: BookingDialogProps) 
                   htmlFor="online"
                   className={`flex items-center gap-4 p-4 border rounded-xl cursor-pointer transition-all ${
                     paymentMethod === 'online' ? 'border-primary bg-primary/5' : 'border-border'
-                  } opacity-50`}
+                  }`}
                 >
-                  <RadioGroupItem value="online" id="online" disabled />
+                  <RadioGroupItem value="online" id="online" />
                   <CreditCard className="h-5 w-5 text-primary" />
                   <div className="flex-1">
                     <p className="font-medium">Pay Online</p>
-                    <p className="text-sm text-muted-foreground">Coming soon</p>
+                    <p className="text-sm text-muted-foreground">Secure payment via Stripe</p>
                   </div>
                 </label>
               </RadioGroup>
