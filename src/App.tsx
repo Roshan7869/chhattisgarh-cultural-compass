@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Heritage from "./pages/Heritage";
 import Marketplace from "./pages/Marketplace";
 import TravelPool from "./pages/TravelPool";
+import MyBookings from "./pages/MyBookings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/heritage" element={<Heritage />} />
           <Route path="/marketplace" element={<Marketplace />} />
           <Route path="/travel" element={<TravelPool />} />
+          <Route path="/bookings" element={<MyBookings />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
