@@ -14,6 +14,10 @@ export interface TravelPool {
     trips: number;
   };
   vehicleType: 'car' | 'suv' | 'tempo';
+  coordinates: {
+    from: { lat: number; lng: number };
+    to: { lat: number; lng: number };
+  };
 }
 
 export const travelPools: TravelPool[] = [
@@ -32,7 +36,11 @@ export const travelPools: TravelPool[] = [
       rating: 4.8,
       trips: 24
     },
-    vehicleType: 'suv'
+    vehicleType: 'suv',
+    coordinates: {
+      from: { lat: 21.2514, lng: 81.6296 },
+      to: { lat: 19.2033, lng: 81.7040 }
+    }
   },
   {
     id: '2',
@@ -49,7 +57,11 @@ export const travelPools: TravelPool[] = [
       rating: 4.9,
       trips: 38
     },
-    vehicleType: 'car'
+    vehicleType: 'car',
+    coordinates: {
+      from: { lat: 21.2514, lng: 81.6296 },
+      to: { lat: 22.1208, lng: 81.0494 }
+    }
   },
   {
     id: '3',
@@ -66,7 +78,11 @@ export const travelPools: TravelPool[] = [
       rating: 4.7,
       trips: 15
     },
-    vehicleType: 'tempo'
+    vehicleType: 'tempo',
+    coordinates: {
+      from: { lat: 19.0748, lng: 82.0194 },
+      to: { lat: 19.5976, lng: 81.6588 }
+    }
   },
   {
     id: '4',
@@ -83,7 +99,11 @@ export const travelPools: TravelPool[] = [
       rating: 4.6,
       trips: 42
     },
-    vehicleType: 'suv'
+    vehicleType: 'suv',
+    coordinates: {
+      from: { lat: 21.2514, lng: 81.6296 },
+      to: { lat: 18.9874, lng: 81.9486 }
+    }
   }
 ];
 

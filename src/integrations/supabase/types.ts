@@ -14,7 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      travel_pool_bookings: {
+        Row: {
+          booking_status: string
+          created_at: string
+          id: string
+          payment_method: string
+          payment_status: string
+          pool_id: string
+          seats_booked: number
+          total_amount: number
+          updated_at: string
+          user_email: string | null
+          user_name: string
+          user_phone: string
+        }
+        Insert: {
+          booking_status?: string
+          created_at?: string
+          id?: string
+          payment_method: string
+          payment_status?: string
+          pool_id: string
+          seats_booked?: number
+          total_amount: number
+          updated_at?: string
+          user_email?: string | null
+          user_name: string
+          user_phone: string
+        }
+        Update: {
+          booking_status?: string
+          created_at?: string
+          id?: string
+          payment_method?: string
+          payment_status?: string
+          pool_id?: string
+          seats_booked?: number
+          total_amount?: number
+          updated_at?: string
+          user_email?: string | null
+          user_name?: string
+          user_phone?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
