@@ -3,6 +3,7 @@ import { HeritageSite, categoryLabels } from '@/data/heritage';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { openGoogleMapsLocation } from '@/lib/maps';
 
 interface HeritageCardProps {
   site: HeritageSite;
@@ -17,6 +18,10 @@ const categoryColors: Record<HeritageSite['category'], string> = {
 };
 
 export function HeritageCard({ site, index }: HeritageCardProps) {
+  const handleNavigate = () => {
+    openGoogleMapsLocation(site.coordinates, site.name);
+  };
+
   return (
     <article 
       className="group bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-500 animate-fade-in"
@@ -59,7 +64,7 @@ export function HeritageCard({ site, index }: HeritageCardProps) {
           {site.description}
         </p>
         
-        <Button variant="outline" size="sm" className="w-full group/btn">
+        <Button variant="outline" size="sm" className="w-full group/btn" onClick={handleNavigate}>
           <Navigation className="h-4 w-4 mr-2 transition-transform group-hover/btn:rotate-45" />
           Navigate
         </Button>
